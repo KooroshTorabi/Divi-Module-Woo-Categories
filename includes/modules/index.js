@@ -1,3 +1,3 @@
-import HelloWorld from './HelloWorld/HelloWorld';
+import CategoryCountText from './CategoryCountText/CategoryCountText';
 
-export default [HelloWorld];
+export default [CategoryCountText];

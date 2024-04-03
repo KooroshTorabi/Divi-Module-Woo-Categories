@@ -1,0 +1,1 @@
+/home/kourosh/.config/yarn/global/node_modules/divi-scripts/config/Gruntfile.js

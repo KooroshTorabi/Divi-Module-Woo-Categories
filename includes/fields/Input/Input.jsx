@@ -1,12 +1,10 @@
 // External Dependencies
-import React, { Component } from 'react';
-
+import React, { Component } from "react";
 // Internal Dependencies
-import './style.css';
+import "./style.css";
 
 class Input extends Component {
-
-  static slug = 'wcac_input';
+  static slug = "wcac_input";
 
   /**
    * Handle input value change.
@@ -15,18 +13,18 @@ class Input extends Component {
    */
   _onChange = (event) => {
     this.props._onChange(this.props.name, event.target.value);
-  }
+  };
 
   render() {
-    return(
+    return (
       <input
         id={`wcac-input-${this.props.name}`}
         name={this.props.name}
         value={this.props.value}
-        type='text'
-        className='wcac-input'
+        type="text"
+        className="wcac-input"
         onChange={this._onChange}
-        placeholder='Your text here ...'
+        placeholder="Your text here ..."
       />
     );
   }
