@@ -31,6 +31,30 @@ class WCAC_CategoryCountText extends ET_Builder_Module {
 				// $category_options[] = $category->name;
 			}
 		}
+
+		$data = [
+			[
+				 'id' => 2,
+				 'text' => "£8, Per hour",
+				 'selected' => false
+			],
+			[
+				 'id' => 3,
+				 'text' => "£10, Per hour",
+				 'selected' => false
+			],
+			[
+				 'id' => 23,
+				 'text' => "Up to £10000, Per annum",
+				 'selected' => false
+			],
+			[
+				 'id' => 24,
+				 'text' => "£10,000 - £15,000, Per annum",
+				 'selected' => false
+			],
+		 ];
+		// print_r($category_options);
        $opts = array(
 		'1' =>"optionx ",
 		'2' =>"optionx ",
@@ -53,27 +77,27 @@ class WCAC_CategoryCountText extends ET_Builder_Module {
 			// 	'description'     => esc_html__( 'Select the categories to display.', 'et_builder' ),
 			// 	'multiple'        => true,
 			// 	),
-			'selected_categories_text' => array(
-				'label'           => esc_html__( 'selected categories_text', 'wcac-woo-category-and-count' ),
-				'type'            => 'text',
-				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Content entered here will appear inside the module.', 'wcac-woo-category-and-count' ),
-				// 'toggle_slug'     => 'content',
-				// 'tab_slug'		  => 'Content',
-			),			
-			'selected_categories' => array(
-				'label'           => esc_html__( 'Selected Categories', 'et_builder' ),
-				'type'            => 'select',
-				'option_category' => 'basic_option',
-				'options'         => $category_options,
-				'description'     => esc_html__( 'Select the categories to display.', 'et_builder' ),
-				'multiple'        => true,
-				// 'toggle_slug'     => 'content',
-				// 'tab_slug'		  => 'Content',
-				'ui'              => array(
-					'placeholder' => esc_attr__( 'Search categories...', 'et_builder' ),
-				),
-			),
+			// 'selected_categories_text' => array(
+			// 	'label'           => esc_html__( 'selected categories_text', 'wcac-woo-category-and-count' ),
+			// 	'type'            => 'text',
+			// 	'option_category' => 'basic_option',
+			// 	'description'     => esc_html__( 'Content entered here will appear inside the module.', 'wcac-woo-category-and-count' ),
+			// 	// 'toggle_slug'     => 'content',
+			// 	// 'tab_slug'		  => 'Content',
+			// ),			
+			// 'selected_categories' => array(
+			// 	'label'           => esc_html__( 'Selected Categories', 'et_builder' ),
+			// 	'type'            => 'select',
+			// 	'option_category' => 'basic_option',
+			// 	'options'         => $category_options,
+			// 	'description'     => esc_html__( 'Select the categories to display.', 'et_builder' ),
+			// 	'multiple'        => true,
+			// 	// 'toggle_slug'     => 'content',
+			// 	// 'tab_slug'		  => 'Content',
+			// 	'ui'              => array(
+			// 		'placeholder' => esc_attr__( 'Search categories...', 'et_builder' ),
+			// 	),
+			// ),
 
 			// 'options_list' => array(
 			// 	'label'           => esc_html__( 'Category List', 'et_builder' ),
@@ -82,23 +106,24 @@ class WCAC_CategoryCountText extends ET_Builder_Module {
 			// 	'toggle_slug'     => 'form',
 			// ),
 
-			'content' => array(
-				'label'           => esc_html__( 'Content', 'wcac-woo-category-and-count' ),
-				'type'            => 'tiny_mce',
-				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Content entered here will appear inside the module.', 'wcac-woo-category-and-count' ),
-				'toggle_slug'     => 'main_content',
-			),
+			// 'content' => array(
+			// 	'label'           => esc_html__( 'Content', 'wcac-woo-category-and-count' ),
+			// 	'type'            => 'tiny_mce',
+			// 	'option_category' => 'basic_option',
+			// 	'description'     => esc_html__( 'Content entered here will appear inside the module.', 'wcac-woo-category-and-count' ),
+			// 	'toggle_slug'     => 'main_content',
+			// ),
 			// `wcac-input-${this.props.name}`
 			'selected_categories_select2' => array(
 				'label'           => esc_html__( 'Selected Categories(select2)', 'et_builder' ),
 				'type'            => 'select2',
-				'option_category' => 'basic_option',
-				'options'         => $category_options,
+				'option_category' => 'font_option',
+				'options'         => json_encode($data),
+				// 'data'         => $data,
 				'description'     => esc_html__( 'Select the categories to display.', 'et_builder' ),
 				'multiple'        => true,
-				// 'toggle_slug'     => 'content',
-				// 'tab_slug'		  => 'Content',
+				// 'toggle_slug'     => 'main_content',
+				// 'tab_slug'		  => 'content',
 				'ui'              => array(
 					'placeholder' => esc_attr__( 'Search categories...', 'et_builder' ),
 				),
@@ -118,19 +143,26 @@ class WCAC_CategoryCountText extends ET_Builder_Module {
 	}
 
 	public function render( $attrs, $content = null, $render_slug ) {
+		print_r($product_categories);
         $selected_category = isset($attrs['selected_categories']) ? $attrs['selected_categories'] : '';
         // $selected_category = isset($product_categories[$attrs['selected_categories']]) ? $product_categories[$attrs['selected_categories']] : '';
         // $category_select = isset($attrs['category_select']) ? $attrs['category_select'] : '';
         // Render your module HTML using the selected category text and category select
-		// print_r( $this->props);
-		// echo "<br><br>";
-		// print_r($attrs);
-		// echo "<br><br>";
-		// echo ' ===> '.$attrs['selected_categories'];
-		// echo "<br><br>";
+		echo "<br><br>";
+//		print_r( $this->props);
+		 echo "<br><br>";
+		print_r($attrs);
+		echo "<br><br>";
+		echo 'selected_categories ===> '.$attrs['selected_categories'];
+		echo "<br><br>";
 		// print_r($this->product_categories);
 		$category_count = 0;
 		$category = get_term_by('name', $selected_category, 'product_cat');
+		// print("<br> -------------------- <br>");
+
+		// print_r($selected_category);
+		// print("<br> dfsdfsdf <br>");
+		// print_r($category);
 		if ($category) {
 			$category_count = $category->count;
 		}

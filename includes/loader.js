@@ -13,7 +13,7 @@ $(window).on('et_builder_api_ready', (event, API) => {
 
 $.ready(function ($) {
   // Initialize Select2 on the select input
-  $('#selected_categories_select2').select2();
+  $('.et-fb-selected_categories_select2').select2();
 });
 
 // jQuery(document).ready(function ($) {
